@@ -556,7 +556,9 @@ export function ChampionshipManager({
                 }
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a wrestler" />
+                  <SelectValue placeholder="Select a wrestler">
+                    {(value: string) => value === "__none__" ? "Select a wrestler" : wrestlers.find((w) => w.id === value)?.name ?? "Select a wrestler"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="__none__" disabled>

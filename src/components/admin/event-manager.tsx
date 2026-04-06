@@ -257,7 +257,9 @@ export function EventManager({
                 }
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a show" />
+                  <SelectValue placeholder="Select a show">
+                    {(value: string) => shows.find((s) => s.id === value)?.name ?? "Select a show"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {shows.map((s) => (
@@ -278,7 +280,12 @@ export function EventManager({
                 }
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a season" />
+                  <SelectValue placeholder="Select a season">
+                    {(value: string) => {
+                      const s = seasons.find((s) => s.id === value);
+                      return s ? `${s.name}${s.is_current ? " (Current)" : ""}` : "Select a season";
+                    }}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {seasons.map((s) => (

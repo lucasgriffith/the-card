@@ -390,7 +390,9 @@ export function MatchCardEditor({
                 }
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="None" />
+                  <SelectValue placeholder="None">
+                    {(value: string) => value === "__none__" ? "None" : championships.find((c) => c.id === value)?.name ?? "None"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="__none__">None</SelectItem>
@@ -454,7 +456,9 @@ export function MatchCardEditor({
                 }
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a wrestler" />
+                  <SelectValue placeholder="Select a wrestler">
+                    {(value: string) => value === "__none__" ? "Select a wrestler" : wrestlers.find((w) => w.id === value)?.name ?? "Select a wrestler"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="__none__" disabled>
